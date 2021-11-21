@@ -1,8 +1,13 @@
 # raycast-extensions
 
-Songkeys's Raycast extension collection.
+Songkeys's [Raycast](https://www.raycast.com/) extension collection.
 
-## Translateer
+## Scripts
+
+- [Brew Update](./scripts/brew-update.sh): Update homebrew itself and all services and casks then cleanup
+- [Is It Down or Just Me?](./scripts/is-it-down-or-just-me.sh): Check if a website is down or just me
+
+## [Translateer](./translateer)
 
 Translate text with [Google Translate](https://translate.google.com/) using a Puppeteer API ([Translateer](https://t.song.work)).
 
