@@ -1,4 +1,4 @@
-import { List } from "@raycast/api";
+import { ActionPanel, CopyToClipboardAction, List } from "@raycast/api";
 import { useState, useRef } from "react";
 import { fetchResult } from "./api";
 
@@ -8,17 +8,18 @@ export default function ResultList() {
   const cancel = useRef<AbortController>(new AbortController());
 
   const onSearchTextChange = (text: string) => {
+    if (!Boolean(text)) return;
+
     cancel.current.abort();
     cancel.current = new AbortController();
     setIsLoading(true);
 
-    fetchResult(text, cancel.current.signal)
-      .then((res) => {
-        setResult(res ?? {});
-      })
-      .finally(() => {
+    fetchResult(text, cancel.current.signal).then((res) => {
+      if (res) {
+        setResult(res);
         setIsLoading(false);
-      });
+      }
+    });
   };
 
   return (
@@ -30,7 +31,14 @@ export default function ResultList() {
     >
       {result.result && (
         <List.Section title="Result">
-          <List.Item title={result.result} />
+          <List.Item
+            title={result.result}
+            actions={
+              <ActionPanel>
+                <CopyToClipboardAction title="Copy Translation" content={result.result} />
+              </ActionPanel>
+            }
+          />
         </List.Section>
       )}
 
@@ -64,6 +72,11 @@ function Translations({ translations }: { translations: any }) {
           title={item.translation + " (" + item.pos + ")"}
           subtitle={item.reverseTranslations.join(", ")}
           accessoryTitle={item.frequency}
+          actions={
+            <ActionPanel>
+              <CopyToClipboardAction title="Copy Translation" content={item.translation} />
+            </ActionPanel>
+          }
         />
       ))}
     </List.Section>
@@ -85,7 +98,17 @@ function Definitions({ definitions }: { definitions: any }) {
   return (
     <List.Section title="Definitions">
       {items.map((item, i) => (
-        <List.Item key={i} title={item.definition} subtitle={item.example ?? ""} accessoryTitle={item.pos} />
+        <List.Item
+          key={i}
+          title={item.definition}
+          subtitle={item.example ?? ""}
+          accessoryTitle={item.pos}
+          actions={
+            <ActionPanel>
+              <CopyToClipboardAction title="Copy Definition" content={item.definition} />
+            </ActionPanel>
+          }
+        />
       ))}
     </List.Section>
   );
@@ -95,7 +118,15 @@ function Examples({ examples }: { examples: any }) {
   return (
     <List.Section title="Examples">
       {examples.map((text: string) => (
-        <List.Item key={text} title={text} />
+        <List.Item
+          key={text}
+          title={text}
+          actions={
+            <ActionPanel>
+              <CopyToClipboardAction title="Copy Example" content={text} />
+            </ActionPanel>
+          }
+        />
       ))}
     </List.Section>
   );
