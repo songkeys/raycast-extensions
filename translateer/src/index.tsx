@@ -69,9 +69,10 @@ function Translations({ translations }: { translations: any }) {
       {items.map((item, i) => (
         <List.Item
           key={i}
-          title={item.translation + " (" + item.pos + ")"}
+          icon={`pos/${item.pos}.png`}
+          title={item.translation}
           subtitle={item.reverseTranslations.join(", ")}
-          accessoryTitle={item.frequency}
+          accessoryIcon={`frequency/${item.frequency}.png`}
           actions={
             <ActionPanel>
               <CopyToClipboardAction title="Copy Translation" content={item.translation} />
@@ -100,9 +101,10 @@ function Definitions({ definitions }: { definitions: any }) {
       {items.map((item, i) => (
         <List.Item
           key={i}
+          icon={`pos/${item.pos}.png`}
           title={item.definition}
           subtitle={item.example ?? ""}
-          accessoryTitle={item.pos}
+          accessoryTitle={item.label?.join(", ")}
           actions={
             <ActionPanel>
               <CopyToClipboardAction title="Copy Definition" content={item.definition} />
