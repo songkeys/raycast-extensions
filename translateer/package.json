@@ -39,7 +39,7 @@
       "title": "Tranlateer Entry",
       "type": "textfield",
       "default": "https://t.song.work",
-      "required": false,
+      "required": true,
       "description": "The API entry URL"
     },
     {
@@ -47,8 +47,12 @@
       "type": "dropdown",
       "required": true,
       "title": "First Language",
-      "default": "en",
+      "default": "auto",
       "data": [
+        {
+          "title": "🤖 Auto",
+          "value": "auto"
+        },
         {
           "title": "🇿🇦 Afrikaans",
           "value": "af"
@@ -488,7 +492,7 @@
       "name": "lang2",
       "type": "dropdown",
       "required": true,
-      "default": "de",
+      "default": "en",
       "data": [
         {
           "title": "🇿🇦 Afrikaans",
