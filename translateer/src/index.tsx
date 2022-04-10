@@ -71,7 +71,7 @@ function Translations({ translations }: { translations: any }) {
           key={i}
           icon={`pos/${item.pos}.png`}
           title={item.translation}
-          subtitle={item.reverseTranslations.join(", ")}
+          subtitle={item.reversedTranslations.join(", ")}
           accessoryIcon={`frequency/${item.frequency}.png`}
           actions={
             <ActionPanel>
