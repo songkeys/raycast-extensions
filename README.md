@@ -10,10 +10,12 @@ Songkeys's [Raycast](https://www.raycast.com/) extension collection.
 
    ![installation](https://user-images.githubusercontent.com/22665058/162558227-123b137d-52de-4288-bb99-3ecbb65fc127.png)
 
+   Some scrips need [deno](https://deno.land/) to run. You can install deno by running `brew install deno` in your terminal.
+
 3. For extensions, go to an extension's folder and run `npm i && npm run dev`, then exit the process once it completes building. For example:
 
    ```bash
-   $ cd ./translateer
+   $ cd ./extensions/translateer
    $ npm i && npm run dev
    ❯ npm run dev
 
@@ -33,8 +35,11 @@ Songkeys's [Raycast](https://www.raycast.com/) extension collection.
 
 - [Brew Update](./scripts/brew-update.sh): Update homebrew itself and all services and casks then cleanup
 - [Is It Down or Just Me?](./scripts/is-it-down-or-just-me.sh): Check if a website is down or just me
+- [DuckDuckGo Email](./scripts/duckduckgo-email.sh): Generate an email address on [DuckDuckGo](https://duckduckgo.com/email/)
 
-## [Translateer](./translateer)
+## Extensions
+
+### [Translateer](./extensions/translateer)
 
 Translate text with [Google Translate](https://translate.google.com/) using a Puppeteer API ([Translateer](https://t.song.work)).
 
@@ -45,3 +50,7 @@ Translate text with [Google Translate](https://translate.google.com/) using a Pu
 ```
 
 ```
+
+### More
+
+Check more extensions in [my Raycast Extension Store](https://www.raycast.com/Songkeys).
